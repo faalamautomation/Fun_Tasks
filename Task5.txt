@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+FileSize=500
+
+if [[ $TF -eq $FileSize ]]
+then
+   mv *.data ~/otherdirectory 
+   cd /otherdirectory/
+   for f in *.data; do gpg --symmetric "$f"; done;
+   rm *.data
+fi

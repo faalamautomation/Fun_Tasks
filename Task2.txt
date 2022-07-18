@@ -1,0 +1,91 @@
+=======================================================
+Task -2
+=======================================================
+
+Commands
+
+=======================================================
+
+Domain Server IP: 217.146.69.52
+
+nmap 217.146.69.52
+
+nmap -sS -O 217.146.69.52/24 >Allhostsinfo.txt
+
+nmap -O -v 217.146.69.52
+
+nmap -p 1-65535 -T4 -A -v > Osinfo.txt
+
+
+
+=====================================================
+Output {This output represents a part of the whole output which can be obtained by running above commands one by one}
+=====================================================
+
+Discovered open ports on 217.146.69.52
+-----------------------------------------
+
+21/tcp 
+80/tcp
+22/tcp
+443/tcp
+
+
+Hosts Uptime
+------------------------------------------
+
+217.146.69.1 (0.0035s latency)
+
+217.146.69.2 (0.0028s latency)
+
+217.146.69.3 (0.0028s latency)
+
+217.146.69.4 (0.0027s latency)
+
+217.146.69.5 (0.0026s latency)
+
+217.146.69.6 (0.0024s latency)
+
+217.146.69.7 (0.0038s latency)
+
+
+
+OS guesses
+-------------------------------------------
+
+The OS guess is linux 98 percent on aggressive scan.
+
+
+Services Running
+-------------------------------------------
+
+Nmap scan report for mysql-69-81.tll07.zoneas.eu (217.146.69.81)
+Host is up (0.0036s latency).
+Not shown: 991 filtered ports
+PORT 	STATE  SERVICE
+85/tcp   closed mit-ml-dev
+500/tcp  closed isakmp
+646/tcp  closed ldp
+691/tcp  closed resvc
+722/tcp  closed unknown
+5810/tcp closed unknown
+8081/tcp closed blackice-icecap
+8654/tcp closed unknown
+9220/tcp closed unknown
+
+
+
+Location
+-------------------------------------------
+Location of servers is Tallinn in EU zone
+
+
+
+============================================================================
+Functions
+============================================================================
+
+All servers are running in Tallinn, EU zone
+and supporting different services, such as 
+netassistant, tvbus,ldp, blackice-icecap and 
+so on over multiple hosts in the network.

@@ -1,0 +1,24 @@
+CREATE OR REPLACE procedure SYS.kill_long_sessions as
+BEGIN
+
+FOR i IN (select s.sid||','||s.serial# killId,s.username username,ss.sql_fulltext stext,s.logon_time stime,s.last_call_et durat from 
+v$session s, v$sql ss where s.machine='Server_name' and s.last_call_et>5 and
+s.sql_id=ss.sql_id and ss.sql_fulltext not like '%SALES%' )
+
+LOOP
+declare
+l_error VARCHAR2(2000):='';
+begin
+insert into sys.kill_sessions_info values(i.killId,i.username,i.stext,i.stime,i.durat);
+commit;
+EXECUTE IMMEDIATE 'ALTER SYSTEM KILL SESSION '''||i.killId||''' IMMEDIATE';
+EXCEPTION
+WHEN OTHERS THEN
+l_error:=SQLERRM;
+
+end;
+END LOOP;
+
+COMMIT;
+
+END;

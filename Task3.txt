@@ -1,0 +1,76 @@
+=====================================================
+#Define Flask app code
+=====================================================
+from flask import Flask
+import time
+ 
+app= Flask(__name__)
+ 
+ 
+if(__name__=="__main__"):
+    app.run(debug=True)
+ 
+@app.route("/")
+ 
+def hellomessage():
+    return "Welcome to the webservice written in python"
+
+
+#======================================================
+#Define systemd service
+#======================================================
+
+[Unit]
+Description=Welcome to python webservice
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+User=fahad
+PermissionsStartOnly=true
+ExecStart=/usr/bin/python3 /home/fahad/Downloads/Apulsar2/app.py
+Restart=on-failure
+TimeoutSec=600
+StandardInput=socket
+
+#======================================================
+#Define socket
+#======================================================
+
+[Unit]
+Description=This is flask service socket
+
+[Socket]
+ListenStream=127.0.0.1:5000
+Accept=yes
+
+[Install]
+WantedBy=sockets.target
+
+========================================================
+restartscript.sh
+========================================================
+
+
+#!/usr/bin/env bash
+
+TCPL=500
+Timeout=50
+
+
+if [[ $TCPL -gt 500 || $Timeout -gt 50]]
+then
+	systemctl restart theflaskapp.service
+    echo 'web-server is restarted'	
+fi
+
+========================================================
+Task scheduling
+========================================================
+
+crontab -e
+
+*/1 * * * * /home/fahad/restartserver.sh
+

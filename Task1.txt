@@ -1,0 +1,26 @@
+===========================================
+Command to filter the output of random file
+===========================================
+
+grep -E "\b-{2,}" test.txt
+
+
+
+=============================================
+Script for creating a random text in a file
+=============================================
+
+#!/usr/bin/env bash
+
+for i in {1..5}
+do
+    	echo "Welcome $i I am random - file"
+    	echo "I am with double hyphon -- $i"
+done
+for a in {a..z}
+do
+    	echo "Letter.wme;kljqwpo-: $a"
+    	echo "letter .,mdlasjdu19-2i9-jd.;.z/.;23123lkjlk3--: $a"
+    	echo "tripple dsdsd--- $a"
+
+done

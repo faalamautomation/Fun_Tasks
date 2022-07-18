@@ -1,0 +1,24 @@
+==========================================
+Command for filtering log_fragment
+==========================================
+
+grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" log_fragment | grep -E "30 seconds" log_fragment
+
+
+==========================================
+Python Script for parsing the log_fragment
+==========================================
+
+f=open('log_fragment')
+lines=f.readlines()
+for l in lines:
+    if l.find("30 seconds"):
+        print(l)
+		
+
+============================================
+Comments
+============================================
+
+It is difficult to find the required output because of variation in the 
+number of fields in the lines of the log_fragment.
